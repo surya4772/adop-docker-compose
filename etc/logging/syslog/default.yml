@@ -1,4 +1,9 @@
 # set LOGSTASH_HOST to dns/ip of logstash host
+gitlab:
+  log_driver: "syslog"
+  log_opt:
+    syslog-address: "udp://${LOGSTASH_HOST}:25826"
+    tag: "proxy"
 
 proxy:
   log_driver: "syslog"

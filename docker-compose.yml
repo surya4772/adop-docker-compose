@@ -4,7 +4,7 @@
 proxy:
   container_name: proxy
   restart: always
-  image: accenture/adop-nginx:0.3.2
+  image: surya4772/nginx4 
   #build: ../images/docker-nginx/
   net: ${CUSTOM_NETWORK_NAME}
   ports:
@@ -32,18 +32,17 @@ gitlab:
   environment:
     GITLAB_ROOT_PASSWORD: "${GITLAB_ROOT_PASSWORD}"
     http_proxy:
-    https_proxy:
     no_proxy:
     GITLAB_OMNIBUS_CONFIG: |
-     external_url '${PROTO}://${TARGET_HOST}/gitlab'
+     external_url 'http://localhost/gitlab'
      gitlab_rails['ldap_enabled'] = true
      nginx['listen_port'] = 80
-     nginx['listen_https'] = false
+     nginx['listen_http'] = false
      nginx['proxy_set_headers'] = {
        "X-Forwarded-Proto" => "http",
-       "X-Forwarded-Ssl" => "on"
+       "X-Forwarded-Ssl" => "off"
      }
-     gitlab_rails['env'] = { "http_proxy"=>"${http_proxy}", "https_proxy"=>"${https_proxy}", "no_proxy"=>"${no_proxy}" }
+     gitlab_rails['env'] = { "http_proxy"=>"${http_proxy}", "no_proxy"=>"${no_proxy}" }
      gitlab_rails['ldap_servers'] = YAML.load <<-'EOS'
        main:
          label: 'LDAP'

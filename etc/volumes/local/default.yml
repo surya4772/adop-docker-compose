@@ -3,6 +3,12 @@ proxy:
     - nginx_config:/etc/nginx
     - nginx_releasenote:/usr/share/nginx/html
 
+gitlab:
+  volumes:
+    - gitlab_config:/etc/gitlab
+    - gitlab_data:/var/opt/gitlab
+    - gitlab_log:/var/log/gitlab
+
 ldap:
   volumes:
       - ldap_db:/var/lib/ldap
