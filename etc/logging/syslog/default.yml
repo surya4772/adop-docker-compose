@@ -5,17 +5,18 @@ gitlab:
     syslog-address: "udp://${LOGSTASH_HOST}:25826"
     tag: "proxy"
 
-proxy:
-  log_driver: "syslog"
-  log_opt:
-    syslog-address: "udp://${LOGSTASH_HOST}:25826"
-    tag: "proxy"
 
-ldap:
-  log_driver: "syslog"
-  log_opt:
-    syslog-address: "udp://${LOGSTASH_HOST}:25826"
-    tag: "ldap"
+#proxy:
+#  log_driver: "syslog"
+#  log_opt:
+#    syslog-address: "udp://${LOGSTASH_HOST}:25826"
+#    tag: "proxy"
+
+#ldap:
+#  log_driver: "syslog"
+#  log_opt:
+#    syslog-address: "udp://${LOGSTASH_HOST}:25826"
+#    tag: "ldap"
 
 gerrit-mysql:
   log_driver: "syslog"

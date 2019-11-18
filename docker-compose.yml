@@ -4,7 +4,7 @@
 proxy:
   container_name: proxy
   restart: always
-  image: surya4772/nginx4 
+  image: surya4772/nginx11 
   #build: ../images/docker-nginx/
   net: ${CUSTOM_NETWORK_NAME}
   ports:
@@ -19,7 +19,16 @@ proxy:
     - "LDAP_GROUP_ATTRIBUTE=member"
     - "LDAP_USER_ID_ATTRIBUTE=cn"
     - "LDAP_USER_OBJECT_CLASS=inetOrgPerson"
-    
+
+svn-server:
+  container_name: svn-server
+  restart: always
+  image: krisdavison/svn-server:v3.0 
+  net: ${CUSTOM_NETWORK_NAME}
+  ports: 
+    - "80"
+    - "3690"
+      
 gitlab:
   image: gitlab/gitlab-ce:10.1.0-ce.0
   container_name: gitlab
