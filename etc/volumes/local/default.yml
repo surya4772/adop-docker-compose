@@ -9,6 +9,18 @@ svn-server:
     - svn_config:/config
     - svn_cron:/etc/cron.d
 
+influxdb:
+  volumes:
+    - influxdb_data:/var/lib/influxdb
+
+telegraf:
+  volumes:
+    - telegraf_config:/etc/telegraf
+
+grafana:
+  volumes:
+    - grafana_data:/var/lib/grafana
+
 gitlab:
   volumes:
     - gitlab_config:/etc/gitlab
